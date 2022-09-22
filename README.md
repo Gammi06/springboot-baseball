@@ -125,4 +125,10 @@ COMMIT;
 ### 쿼리
 ```sql
 
+SELECT * FROM players
+ORDER BY teamname;
+
+SELECT * FROM players
+ORDER BY position;
+
 ```

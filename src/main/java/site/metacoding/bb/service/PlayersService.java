@@ -9,7 +9,9 @@ import lombok.RequiredArgsConstructor;
 import site.metacoding.bb.domain.players.Players;
 import site.metacoding.bb.domain.players.PlayersDao;
 import site.metacoding.bb.web.dto.request.players.SaveDto;
-import site.metacoding.bb.web.dto.response.players.listDto;
+import site.metacoding.bb.web.dto.response.players.PositionlistDto;
+import site.metacoding.bb.web.dto.response.players.TeamlistDto;
+import site.metacoding.bb.web.dto.response.players.ListDto;
 
 @RequiredArgsConstructor
 @Service
@@ -28,12 +30,20 @@ public class PlayersService {
 		playersDao.delete(id);
 	}
 
-	public List<listDto> findAll() {
+	public List<ListDto> findAll() {
 		return playersDao.findAll();
 	}
+	
+	public List<TeamlistDto> findByTeam(){
+		return playersDao.findByTeam();
+	}
+	
+	public List<PositionlistDto> findByPosition(){
+		return playersDao.findByPosition();
+	}
 
-	public listDto findById(Integer id) {
-		listDto listDto = playersDao.findById(id);
+	public ListDto findById(Integer id) {
+		ListDto listDto = playersDao.findById(id);
 		if (listDto == null)
 			return null;
 

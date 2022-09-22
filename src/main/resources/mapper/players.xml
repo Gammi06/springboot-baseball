@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="site.metacoding.bb.domain.players.PlayersDao">
+
+	<insert id="insert">
+		INSERT INTO players(teamname, position, playername, createdAt)
+		VALUES(#{teamname}, #{position}, #{playername}, NOW());
+	</insert>
+
+	<select id="findAll"
+		resultType="site.metacoding.bb.web.dto.response.players.ListDto">
+		SELECT * FROM players
+	</select>
+	
+	<select id="findByTeam"
+		resultType="site.metacoding.bb.web.dto.response.players.TeamListDto">
+	</select>
+	
+	<select id="findByPosition"
+		resultType="site.metacoding.bb.web.dto.response.players.PositionListDto">
+	</select>
+	
+	<select id="findById"
+		resultType="site.metacoding.bb.web.dto.response.players.ListDto">
+		SELECT * FROM players WHERE id = #{id}
+	</select>
+
+	<delete id="">
+		DELETE FROM players WHERE id = #{id}
+	</delete>
+
+</mapper>

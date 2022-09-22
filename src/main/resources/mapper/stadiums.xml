@@ -10,12 +10,12 @@
 	</insert>
 
 	<select id="findAll"
-		resultType="site.metacoding.bb.web.dto.response.stadiums.listDto">
+		resultType="site.metacoding.bb.web.dto.response.stadiums.ListDto">
 		SELECT * FROM stadiums
 	</select>
 
 	<select id="findById"
-		resultType="site.metacoding.bb.web.dto.response.stadiums.listDto">
+		resultType="site.metacoding.bb.web.dto.response.stadiums.ListDto">
 		SELECT * FROM stadiums WHERE id = #{id}
 	</select>
 

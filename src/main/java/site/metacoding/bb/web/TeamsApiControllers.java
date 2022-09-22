@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RestController;
 import lombok.RequiredArgsConstructor;
 import site.metacoding.bb.service.TeamsService;
 import site.metacoding.bb.web.dto.request.teams.SaveDto;
-import site.metacoding.bb.web.dto.response.teams.listDto;
+import site.metacoding.bb.web.dto.response.teams.ListDto;
 
 @RequiredArgsConstructor
 @RestController
@@ -26,14 +26,14 @@ public class TeamsApiControllers {
 	}
 	
 	@GetMapping("/api/teams")
-	public List<listDto> findAll(){
-		List<listDto> teams = teamsService.findAll();
+	public List<ListDto> findAll(){
+		List<ListDto> teams = teamsService.findAll();
 		return teams;
 	}
 	
 	@GetMapping("/api/teams/{id}")
-	public listDto findById(@PathVariable Integer id) {
-		listDto teams = teamsService.findById(id);
+	public ListDto findById(@PathVariable Integer id) {
+		ListDto teams = teamsService.findById(id);
 		return teams;
 	}
 	

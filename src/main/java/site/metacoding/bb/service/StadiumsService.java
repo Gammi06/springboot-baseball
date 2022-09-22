@@ -2,7 +2,6 @@ package site.metacoding.bb.service;
 
 import java.util.List;
 
-import org.apache.ibatis.annotations.Insert;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -10,7 +9,7 @@ import lombok.RequiredArgsConstructor;
 import site.metacoding.bb.domain.stadiums.Stadiums;
 import site.metacoding.bb.domain.stadiums.StadiumsDao;
 import site.metacoding.bb.web.dto.request.stadiums.SaveDto;
-import site.metacoding.bb.web.dto.response.stadiums.listDto;
+import site.metacoding.bb.web.dto.response.stadiums.ListDto;
 
 @RequiredArgsConstructor
 @Service
@@ -29,12 +28,12 @@ public class StadiumsService {
 		stadiumsDao.delete(id);
 	}
 
-	public List<listDto> findAll() {
+	public List<ListDto> findAll() {
 		return stadiumsDao.findAll();
 	}
 
-	public listDto findById(Integer id) {
-		listDto listDto = stadiumsDao.findById(id);
+	public ListDto findById(Integer id) {
+		ListDto listDto = stadiumsDao.findById(id);
 		if (listDto == null) {
 			return null;
 		}

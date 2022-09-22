@@ -9,7 +9,7 @@ import lombok.RequiredArgsConstructor;
 import site.metacoding.bb.domain.teams.Teams;
 import site.metacoding.bb.domain.teams.TeamsDao;
 import site.metacoding.bb.web.dto.request.teams.SaveDto;
-import site.metacoding.bb.web.dto.response.teams.listDto;
+import site.metacoding.bb.web.dto.response.teams.ListDto;
 
 @RequiredArgsConstructor
 @Service
@@ -29,15 +29,15 @@ public class TeamsService {
 		teamsDao.delete(id);
 	}
 
-	public listDto findById(Integer id) {
-		listDto listDto = teamsDao.findById(id);
+	public ListDto findById(Integer id) {
+		ListDto listDto = teamsDao.findById(id);
 		if (listDto == null) {
 			return null;
 		}
 		return listDto;
 	}
 
-	public List<listDto> findAll() {
+	public List<ListDto> findAll() {
 		return teamsDao.findAll();
 	}
 }
