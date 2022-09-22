@@ -1,0 +1,43 @@
+package site.metacoding.bb.service;
+
+import java.util.List;
+
+import org.apache.ibatis.annotations.Insert;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
+import lombok.RequiredArgsConstructor;
+import site.metacoding.bb.domain.stadiums.Stadiums;
+import site.metacoding.bb.domain.stadiums.StadiumsDao;
+import site.metacoding.bb.web.dto.request.stadiums.SaveDto;
+import site.metacoding.bb.web.dto.response.stadiums.listDto;
+
+@RequiredArgsConstructor
+@Service
+public class StadiumsService {
+	private final StadiumsDao stadiumsDao;
+
+	public void insert(SaveDto saveDto) {
+		Stadiums stadiums = saveDto.toEntity();
+		stadiumsDao.insert(stadiums);
+	}
+
+	@Transactional(rollbackFor = RuntimeException.class)
+	public void delete(Integer id) {
+		if (stadiumsDao.findById(id) == null)
+			return;
+		stadiumsDao.delete(id);
+	}
+
+	public List<listDto> findAll() {
+		return stadiumsDao.findAll();
+	}
+
+	public listDto findById(Integer id) {
+		listDto listDto = stadiumsDao.findById(id);
+		if (listDto == null) {
+			return null;
+		}
+		return listDto;
+	}
+}
