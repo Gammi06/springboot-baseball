@@ -9,6 +9,6 @@ import lombok.Setter;
 @Getter
 public class ListDto {
 	private Integer id;
-	private String teamName;
+	private String teamsName;
 	private Timestamp createdAt;
 }

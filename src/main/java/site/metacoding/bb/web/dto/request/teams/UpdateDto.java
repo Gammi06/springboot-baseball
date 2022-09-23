@@ -6,6 +6,6 @@ import lombok.Setter;
 @Setter
 @Getter
 public class UpdateDto {
-	private String stadiumname;
-	private String teamname;
+	private String stadiumsName;
+	private String teamsName;
 }

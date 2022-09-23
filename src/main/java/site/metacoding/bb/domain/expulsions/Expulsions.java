@@ -11,16 +11,16 @@ import lombok.Setter;
 @Getter
 public class Expulsions {
 	private Integer id;
-	private String playerName;
+	private String playersName;
 	private Integer teamsId;
-	private Integer positionId;
+	private Integer positionsId;
 	private Integer reasonsId;
 	private Timestamp createdAt;
 
-	public Expulsions(String playerName, Integer teamsId, Integer positionId, Integer reasonsId) {
-		this.playerName = playerName;
+	public Expulsions(String playersName, Integer teamsId, Integer positionsId, Integer reasonsId) {
+		this.playersName = playersName;
 		this.teamsId = teamsId;
-		this.positionId = positionId;
+		this.positionsId = positionsId;
 		this.reasonsId = reasonsId;
 	}
 }

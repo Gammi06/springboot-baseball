@@ -7,13 +7,13 @@ import site.metacoding.bb.domain.expulsions.Expulsions;
 @Setter
 @Getter
 public class SaveDto {
-	private String playerName;
+	private String playersName;
 	private Integer teamsId;
-	private Integer positionId;
+	private Integer positionsId;
 	private Integer reasonsId;
 
 	public Expulsions toEntity() {
-		Expulsions expulsionsPS = new Expulsions(this.playerName, this.teamsId, this.positionId, this.reasonsId);
+		Expulsions expulsionsPS = new Expulsions(this.playersName, this.teamsId, this.positionsId, this.reasonsId);
 		return expulsionsPS;
 	}
 }

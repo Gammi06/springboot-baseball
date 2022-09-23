@@ -11,12 +11,12 @@ import lombok.Setter;
 @Getter
 public class Stadiums {
 	private Integer id;
-	private String stadiumname;
+	private String stadiumsName;
 	private Integer teamsId;
 	private Timestamp createdAt;
 	
-	public Stadiums(String stadiumname, Integer teamsId) {
-		this.stadiumname = stadiumname;
+	public Stadiums(String stadiumsName, Integer teamsId) {
+		this.stadiumsName = stadiumsName;
 		this.teamsId = teamsId;
 	}
 }

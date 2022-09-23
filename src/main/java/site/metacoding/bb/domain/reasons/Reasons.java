@@ -9,5 +9,5 @@ import lombok.Setter;
 @Getter
 public class Reasons {
 	private Integer id;
-	private String reason;
+	private String reasons;
 }

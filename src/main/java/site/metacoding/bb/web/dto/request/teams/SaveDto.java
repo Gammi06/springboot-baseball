@@ -7,10 +7,10 @@ import site.metacoding.bb.domain.teams.Teams;
 @Setter
 @Getter
 public class SaveDto {
-	private String teamName;
+	private String teamsName;
 
 	public Teams toEntity() {
-		Teams teams = new Teams(this.teamName);
+		Teams teams = new Teams(this.teamsName);
 		return teams;
 	}
 }

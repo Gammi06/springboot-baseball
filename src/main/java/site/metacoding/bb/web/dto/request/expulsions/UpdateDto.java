@@ -6,8 +6,8 @@ import lombok.Setter;
 @Setter
 @Getter
 public class UpdateDto {
-	private String playerName;
+	private String playersName;
 	private Integer teamsId;
-	private Integer positionId;
+	private Integer positionsId;
 	private Integer reasonsId;
 }
