@@ -1,18 +1,5 @@
 # baseball DB연결 세팅
 
-### 의존성 주입
-```
-- Spring Boot DevTools
-- Lombok
-- Mybatis Framework
-- MySQL Driver
-- Mustache
-- Spring Web
-```
-
-### 설정방법
-- 추가예정
-
 
 ### MariaDB 사용자(bsa) 생성 및 권한 주기
 ```sql
@@ -22,113 +9,83 @@ GRANT ALL PRIVILEGES ON baseballdb.* TO 'bsa'@'%';
 ```
 
 
-### 테이블 생성 (1) - 연습용
+### 테이블 생성
 ```sql
-CREATE TABLE grounds(
-	id INT PRIMARY KEY AUTO_INCREMENT,
-	groundname VARCHAR(20) UNIQUE,
-	createdAt TIMESTAMP
-);
-
 CREATE TABLE teams(
-	id INT PRIMARY KEY AUTO_INCREMENT,
-	groundname VARCHAR(20),
-	teamname VARCHAR(20) UNIQUE,
-	createdAt TIMESTAMP
-);
-
-CREATE TABLE players(
     id INT PRIMARY KEY AUTO_INCREMENT,
-    teamname VARCHAR(20),
-    position VARCHAR(20),
-    playername VARCHAR(20),
+    teamName VARCHAR(20) UNIQUE,
     createdAt TIMESTAMP
 );
 
-CREATE TABLE outers(
-	id INT PRIMARY KEY AUTO_INCREMENT,
-	teamname VARCHAR(20),
-   position VARCHAR(20),
-   playername VARCHAR(20),
-   reason VARCHAR(20),
-   createdAt TIMESTAMP
-);
-```
-
-
-### 테이블 생성 (2) + FOREIGN KEY
-```sql
-DROP TABLE grounds;
-
-CREATE TABLE grounds(
-	id INT PRIMARY KEY AUTO_INCREMENT,
-	groundname VARCHAR(20) UNIQUE,
-	createdAt TIMESTAMP
-);
-
-CREATE TABLE teams(
-	id INT PRIMARY KEY AUTO_INCREMENT,
-	groundname VARCHAR(20),
-	teamname VARCHAR(20) UNIQUE,
-	createdAt TIMESTAMP,
-	FOREIGN KEY (groundname) REFERENCES grounds(groundname)
+CREATE TABLE stadiums(
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    stadiumName VARCHAR(20),
+    teamsId INT,
+    createdAt TIMESTAMP
 );
 
 CREATE TABLE players(
     id INT PRIMARY KEY AUTO_INCREMENT,
-    teamname VARCHAR(20),
-    position VARCHAR(20),
-    playername VARCHAR(20),
-    createdAt TIMESTAMP,
-    FOREIGN KEY (teamname) REFERENCES teams(teamname)
+    playerName VARCHAR(20),
+    teamsId INT,
+    positionsId INT,
+    createdAt TIMESTAMP
 );
 
-CREATE TABLE outers(
-	id INT PRIMARY KEY AUTO_INCREMENT,
-	teamname VARCHAR(20),
-   position VARCHAR(20),
-   playername VARCHAR(20),
-   reason VARCHAR(20),
-   createdAt TIMESTAMP
+CREATE TABLE expulsions(
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    playerName VARCHAR(20),
+    teamsId INT,
+    positionId INT,
+    reasonsId INT,
+    createdAt TIMESTAMP
+);
+
+CREATE TABLE positions(
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    positions VARCHAR(20)
+);
+
+CREATE TABLE reasons(
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    reason VARCHAR(20)
 );
 ```
 
 
 ### 더미데이터 추가 - 연습용
 ```sql
-INSERT INTO grounds(groundname, createdAt) VALUES('그린야구장', NOW());
-INSERT INTO grounds(groundname, createdAt) VALUES('아카야구장', NOW());
-INSERT INTO grounds(groundname, createdAt) VALUES('데미야구장', NOW());
 
-INSERT INTO teams(groundname, teamname, createdAt) VALUES('그린야구장', '쿠크다스', NOW());
-INSERT INTO teams(groundname, teamname, createdAt) VALUES('아카야구장', '몽셀', NOW());
-INSERT INTO teams(groundname, teamname, createdAt) VALUES('데미야구장', '엄마손', NOW());
+insert into teams(teamName, createdAt) values('기아타이거즈', NOW());
+insert into teams(teamName, createdAt) values('롯데자이언츠', NOW());
+insert into teams(teamName, createdAt) values('엘지트윈스', NOW());
 
-INSERT INTO players(teamname, position, playername, createdAt) VALUES('쿠크다스', '코치', '크라운', NOW());
-INSERT INTO players(teamname, position, playername, createdAt) VALUES('쿠크다스', '투수', '신지원', NOW());
-INSERT INTO players(teamname, position, playername, createdAt) VALUES('쿠크다스', '포수', '이현지', NOW());
+insert into positions(positions) VALUES('타자');
+insert into positions(positions) VALUES('투수');
+insert into positions(positions) VALUES('외야수');
+insert into positions(positions) values('내야수');
 
-INSERT INTO players(teamname, position, playername, createdAt) VALUES('몽셀', '코치', '롯데', NOW());
-INSERT INTO players(teamname, position, playername, createdAt) VALUES('몽셀', '투수', '홍연지', NOW());
-INSERT INTO players(teamname, position, playername, createdAt) VALUES('몽셀', '외야수', '심주영', NOW());
+insert into reasons(reason) values('자진사퇴');
+insert into reasons(reason) values('성적부진');
+insert into reasons(reason) values('태도불량');
 
-INSERT INTO players(teamname, position, playername, createdAt) VALUES('엄마손', '코치', '해태', NOW());
-INSERT INTO players(teamname, position, playername, createdAt) VALUES('엄마손', '내야수', '한성유', NOW());
-INSERT INTO players(teamname, position, playername, createdAt) VALUES('엄마손', '외야수', '임수현', NOW());
+insert into stadiums(stadiumName, teamsId, createdAt) VALUES('광주 기아 챔피언스 필드', 1, NOW());
+insert into stadiums(stadiumName, teamsId, createdAt) VALUES('사직 야구장', 2, NOW());
+insert into stadiums(stadiumName, teamsId, createdAt) VALUES('잠실 야구장', 3, NOW());
 
-INSERT INTO outers(teamname, position, playername, reason, createdAt) VALUES('엄마손', '투수', '정승현', '노쇠', NOW());
+insert into players(playerName, teamsId, positionsId, createdAt) VALUES('김진욱', 2, 2, NOW());
+insert into players(playerName, teamsId, positionsId, createdAt) VALUES('안치홍', 2, 4, NOW());
+insert into players(playerName, teamsId, positionsId, createdAt) VALUES('전준우', 2, 3, NOW());
+insert into players(playerName, teamsId, positionsId, createdAt) VALUES('심동섭', 1, 2, NOW());
 
-COMMIT;
+insert into expulsions(playerName, teamsId, positionId, reasonsId, createdAt) VALUES('임창용', 1, 2, 3, NOW());
+
 ```
 
 
 ### 쿼리
 ```sql
 
-SELECT * FROM players
-ORDER BY teamname;
 
-SELECT * FROM players
-ORDER BY position;
 
 ```
