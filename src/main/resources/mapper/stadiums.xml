@@ -5,18 +5,25 @@
 <mapper namespace="site.metacoding.bb.domain.stadiums.StadiumsDao">
 
 	<insert id="insert">
-		INSERT INTO stadiums(stadiumname, createdAt)
-		VALUES(#{stadiumname}, NOW())
+		insert into stadiums(stadiumsName, teamsId, createdAt)
+		VALUES(#{stadiumsName}, #{teamsId}, NOW());
 	</insert>
 
 	<select id="findAll"
-		resultType="site.metacoding.bb.web.dto.response.stadiums.ListDto">
+		resultType="site.metacoding.bb.domain.stadiums.StadiumsDao">
 		SELECT * FROM stadiums
+	</select>
+	
+	<select id="findAllToDto"
+		resultType="site.metacoding.bb.web.dto.response.stadiums.ListDto">
+		SELECT s.id, s.stadiumsName, s.createdAt
+		FROM stadiums s
 	</select>
 
 	<select id="findById"
 		resultType="site.metacoding.bb.web.dto.response.stadiums.ListDto">
-		SELECT * FROM stadiums WHERE id = #{id}
+		SELECT s.id, s.stadiumsName, s.createdAt
+		FROM stadiums s WHERE id = #{id}
 	</select>
 
 	<delete id="delete">

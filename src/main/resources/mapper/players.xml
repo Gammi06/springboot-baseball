@@ -5,30 +5,51 @@
 <mapper namespace="site.metacoding.bb.domain.players.PlayersDao">
 
 	<insert id="insert">
-		INSERT INTO players(teamname, position, playername,
-		createdAt) VALUES(#{teamname}, #{position}, #{playername}, NOW())
+		insert into players(playersName, teamsId, positionsId, createdAt)
+		VALUES(#{playersName}, #{teamsId}, #{positionsId}, NOW())
 	</insert>
 
 	<select id="findAll"
-		resultType="site.metacoding.bb.web.dto.response.players.ListDto">
+		resultType="site.metacoding.bb.domain.players.PlayersDao">
 		SELECT * FROM players
 	</select>
-	
+
+	<select id="findAllToDto"
+		resultType="site.metacoding.bb.web.dto.response.players.ListDto">
+		SELECT p.id, p.playersName, t.teamsName, po.positions,
+		p.createdAt
+		FROM players p
+		LEFT OUTER JOIN teams t ON t.id = p.teamsId
+		LEFT OUTER JOIN positions po ON po.id = p.positionsId
+	</select>
+
 	<select id="findByTeam"
 		resultType="site.metacoding.bb.web.dto.response.players.ListDto">
-		SELECT id, teamname, position, playername FROM players
-		ORDER BY teamname DESC
+		SELECT p.id, p.playersName, t.teamsName, po.positions, p.createdAt
+		FROM players p
+		LEFT OUTER JOIN teams t ON t.id = p.teamsId
+		LEFT OUTER JOIN positions po ON po.id = p.positionsId
+		WHERE p.teamsId = #{id}
+		ORDER BY createdAt DESC
 	</select>
-	
+
 	<select id="findByPosition"
 		resultType="site.metacoding.bb.web.dto.response.players.ListDto">
-		SELECT id, position, teamname, playername FROM players
-		ORDER BY POSITION
+		SELECT p.id, p.playersName, t.teamsName, po.positions, p.createdAt
+		FROM players p
+		LEFT OUTER JOIN teams t ON t.id = p.teamsId
+		LEFT OUTER JOIN positions po ON po.id = p.positionsId
+		WHERE p.positionsId = #{id}
+		ORDER BY createdAt DESC
 	</select>
 
 	<select id="findById"
 		resultType="site.metacoding.bb.web.dto.response.players.ListDto">
-		SELECT * FROM players WHERE id = #{id}
+		SELECT p.id, p.playersName, t.teamsName, po.positions, p.createdAt
+		FROM players p
+		LEFT OUTER JOIN teams t ON t.id = p.teamsId
+		LEFT OUTER JOIN positions po ON po.id = p.positionsId
+		WHERE p.id = #{id}
 	</select>
 
 	<delete id="delete">

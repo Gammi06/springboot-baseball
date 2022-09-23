@@ -10,5 +10,6 @@ import lombok.Setter;
 public class ListDto {
 	private Integer id;
 	private String teamsName;
+	private String stadiumsName;
 	private Timestamp createdAt;
 }
