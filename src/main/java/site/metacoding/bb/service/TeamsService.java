@@ -14,7 +14,6 @@ import site.metacoding.bb.web.dto.response.teams.ListDto;
 @RequiredArgsConstructor
 @Service
 public class TeamsService {
-
 	private final TeamsDao teamsDao;
 
 	public void insert(SaveDto saveDto) {

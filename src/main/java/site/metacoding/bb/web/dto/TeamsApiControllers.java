@@ -1,4 +1,4 @@
-package site.metacoding.bb.web;
+package site.metacoding.bb.web.dto;
 
 import java.util.List;
 
@@ -16,28 +16,27 @@ import site.metacoding.bb.web.dto.response.teams.ListDto;
 @RequiredArgsConstructor
 @RestController
 public class TeamsApiControllers {
-
 	private final TeamsService teamsService;
 
-	@PostMapping("api/teams/save")
+	@PostMapping("/api/teams/save")
 	public String insert(SaveDto saveDto) {
 		teamsService.insert(saveDto);
 		return "팀 추가 완료";
 	}
-	
+
 	@GetMapping("/api/teams")
-	public List<ListDto> findAll(){
+	public List<ListDto> findAll() {
 		List<ListDto> teams = teamsService.findAll();
 		return teams;
 	}
-	
+
 	@GetMapping("/api/teams/{id}")
 	public ListDto findById(@PathVariable Integer id) {
 		ListDto teams = teamsService.findById(id);
 		return teams;
 	}
-	
-	@DeleteMapping("api/teams/{id}")
+
+	@DeleteMapping("/api/teams/{id}")
 	public String delete(@PathVariable Integer id) {
 		teamsService.delete(id);
 		return "팀 삭제 완료";

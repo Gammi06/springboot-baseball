@@ -7,9 +7,10 @@ import lombok.Setter;
 
 @Setter
 @Getter
-public class PositionlistDto {
+public class ListDto {
 	private Integer id;
-	private String teamname;
-	private String playername;
+	private String playersName;
+    private String teamsName;
+    private String positionsName;
 	private Timestamp createdAt;
 }

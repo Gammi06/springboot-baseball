@@ -9,8 +9,6 @@ import lombok.RequiredArgsConstructor;
 import site.metacoding.bb.domain.players.Players;
 import site.metacoding.bb.domain.players.PlayersDao;
 import site.metacoding.bb.web.dto.request.players.SaveDto;
-import site.metacoding.bb.web.dto.response.players.PositionlistDto;
-import site.metacoding.bb.web.dto.response.players.TeamlistDto;
 import site.metacoding.bb.web.dto.response.players.ListDto;
 
 @RequiredArgsConstructor
@@ -33,13 +31,13 @@ public class PlayersService {
 	public List<ListDto> findAll() {
 		return playersDao.findAll();
 	}
-	
-	public List<TeamlistDto> findByTeam(){
-		return playersDao.findByTeam();
+
+	public List<ListDto> findByTeam(){
+		return null;
 	}
-	
-	public List<PositionlistDto> findByPosition(){
-		return playersDao.findByPosition();
+
+	public List<ListDto> findByPosition(){
+		return null;
 	}
 
 	public ListDto findById(Integer id) {
@@ -49,5 +47,4 @@ public class PlayersService {
 
 		return listDto;
 	}
-
 }

@@ -2,6 +2,25 @@
 <!DOCTYPE mapper
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper
-	namespace="site.metacoding.bb.domain.teams.TeamsDao">
+<mapper namespace="site.metacoding.bb.domain.teams.TeamsDao">
+
+	<insert id="insert">
+		INSERT INTO teams(stadiumname, teamname, createdAt)
+		VALUES(#{stadiumname}, #{teamname}, NOW())
+	</insert>
+
+	<select id="findAll"
+		resultType="site.metacoding.bb.web.dto.response.teams.ListDto">
+		SELECT * FROM teams
+	</select>
+
+	<select id="findById"
+		resultType="site.metacoding.bb.web.dto.response.teams.ListDto">
+		SELECT * FROM teams WHERE id = #{id}
+	</select>
+
+	<delete id="delete">
+		DELETE FROM teams WHERE id = #{id}
+	</delete>
+
 </mapper>

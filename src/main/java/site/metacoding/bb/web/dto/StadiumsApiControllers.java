@@ -1,4 +1,4 @@
-package site.metacoding.bb.web;
+package site.metacoding.bb.web.dto;
 
 import java.util.List;
 
@@ -16,7 +16,6 @@ import site.metacoding.bb.web.dto.response.stadiums.ListDto;
 @RequiredArgsConstructor
 @RestController
 public class StadiumsApiControllers {
-
 	private final StadiumsService stadiumsService;
 
 	@PostMapping("/api/stadiums/save")

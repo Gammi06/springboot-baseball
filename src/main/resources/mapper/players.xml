@@ -5,8 +5,8 @@
 <mapper namespace="site.metacoding.bb.domain.players.PlayersDao">
 
 	<insert id="insert">
-		INSERT INTO players(teamname, position, playername, createdAt)
-		VALUES(#{teamname}, #{position}, #{playername}, NOW());
+		INSERT INTO players(teamname, position, playername,
+		createdAt) VALUES(#{teamname}, #{position}, #{playername}, NOW())
 	</insert>
 
 	<select id="findAll"
@@ -15,19 +15,23 @@
 	</select>
 	
 	<select id="findByTeam"
-		resultType="site.metacoding.bb.web.dto.response.players.TeamListDto">
+		resultType="site.metacoding.bb.web.dto.response.players.ListDto">
+		SELECT id, teamname, position, playername FROM players
+		ORDER BY teamname DESC
 	</select>
 	
 	<select id="findByPosition"
-		resultType="site.metacoding.bb.web.dto.response.players.PositionListDto">
+		resultType="site.metacoding.bb.web.dto.response.players.ListDto">
+		SELECT id, position, teamname, playername FROM players
+		ORDER BY POSITION
 	</select>
-	
+
 	<select id="findById"
 		resultType="site.metacoding.bb.web.dto.response.players.ListDto">
 		SELECT * FROM players WHERE id = #{id}
 	</select>
 
-	<delete id="">
+	<delete id="delete">
 		DELETE FROM players WHERE id = #{id}
 	</delete>
 

@@ -9,9 +9,9 @@ import lombok.Setter;
 @Getter
 public class ListDto {
 	private Integer id;
-	private String teamname;
-	private String position;
-	private String playername;
-	private String reason;
+	private String playersName;
+	private String teamsName;
+	private String positionsName;
+	private String reasons;
 	private Timestamp createdAt;
 }

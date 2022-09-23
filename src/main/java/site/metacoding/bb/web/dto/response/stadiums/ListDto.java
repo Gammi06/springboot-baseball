@@ -1,4 +1,4 @@
-package site.metacoding.bb.web.dto.response.players;
+package site.metacoding.bb.web.dto.response.stadiums;
 
 import java.sql.Timestamp;
 
@@ -7,9 +7,9 @@ import lombok.Setter;
 
 @Setter
 @Getter
-public class TeamlistDto {
+public class ListDto {
 	private Integer id;
-	private String position;
-	private String playername;
+	private String stadiumsName;
+    private String teamsName;
 	private Timestamp createdAt;
 }

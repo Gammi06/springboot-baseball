@@ -7,12 +7,12 @@ import site.metacoding.bb.domain.players.Players;
 @Setter
 @Getter
 public class SaveDto {
-	private String teamname;
-	private String position;
-	private String playername;
-	
-	public Players toEntity() {
-		Players players = new Players(this.teamname, this.position, this.playername);
-		return players;
-	}
+    private String playerName;
+    private Integer teamsId;
+    private Integer positionsId;
+    
+    public Players toEntity() {
+    	Players playersPS = new Players(this.playerName, this.teamsId, this.positionsId);
+    	return playersPS;
+    }
 }
