@@ -5,17 +5,20 @@
 <mapper namespace="site.metacoding.bb.domain.teams.TeamsDao">
 
 	<insert id="insert">
-		INSERT INTO teams(stadiumname, teamname, createdAt)
-		VALUES(#{stadiumname}, #{teamname}, NOW())
+		INSERT INTO teams(teamsName, stadiumsId, createdAt)
+		VALUES(#{teamsName}, #{stadiumsId}, NOW())
 	</insert>
 
 	<select id="findAll"
 		resultType="site.metacoding.bb.web.dto.response.teams.ListDto">
-		SELECT * FROM teams
+		SELECT t.id, t.teamsName, s.stadiumsName, t.createdAt
+		FROM teams t
+		LEFT OUTER JOIN stadiums s ON s.id = t.stadiumsId
+		ORDER BY t.createdAt DESC
 	</select>
 
 	<select id="findById"
-		resultType="site.metacoding.bb.web.dto.response.teams.ListDto">
+		resultType="site.metacoding.bb.domain.teams.Teams">
 		SELECT * FROM teams WHERE id = #{id}
 	</select>
 

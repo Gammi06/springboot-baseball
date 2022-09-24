@@ -11,7 +11,7 @@ public class ListDto {
 	private Integer id;
 	private String playersName;
 	private String teamsName;
-	private String positionsName;
+	private String positions;
 	private String reasons;
 	private Timestamp createdAt;
 }

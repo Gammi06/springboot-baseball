@@ -9,7 +9,7 @@ public interface PlayersDao {
 	public List<ListDto> findAll();
 	public List<ListDto> findByTeam();
 	public List<ListDto> findByPosition();
-	public ListDto findById(Integer id);
+	public Players findById(Integer id);
 	public void update(Players players);
 	public void delete(Integer id);
 }

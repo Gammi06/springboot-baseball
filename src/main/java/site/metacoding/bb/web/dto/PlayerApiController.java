@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import lombok.RequiredArgsConstructor;
+import site.metacoding.bb.domain.players.Players;
 import site.metacoding.bb.service.PlayersService;
 import site.metacoding.bb.web.dto.request.players.SaveDto;
 import site.metacoding.bb.web.dto.response.players.ListDto;
@@ -32,18 +33,20 @@ public class PlayerApiController {
 	
 	@GetMapping("/api/players/team")
 	public List<ListDto> findByTeam(){
-		return null;
+		List<ListDto> players = playersService.findByTeam();
+		return players;
 	}
 	
 	@GetMapping("/api/players/position")
 	public List<ListDto> findByPosition(){
-		return null;
+		List<ListDto> players = playersService.findByPosition();
+		return players;
 	}
 
 	@GetMapping("/api/players/{id}")
-	public ListDto findById(@PathVariable Integer id) {
-		ListDto player = playersService.findById(id);
-		return player;
+	public Players findById(@PathVariable Integer id) {
+		Players playersPS = playersService.findById(id);
+		return playersPS;
 	}
 
 	@DeleteMapping("/api/players/{id}")

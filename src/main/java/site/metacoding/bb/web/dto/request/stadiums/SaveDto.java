@@ -8,10 +8,9 @@ import site.metacoding.bb.domain.stadiums.Stadiums;
 @Getter
 public class SaveDto {
 	private String stadiumsName;
-    private Integer teamsId;
 
 	public Stadiums toEntity() {
-		Stadiums stadiums = new Stadiums(this.stadiumsName, this.teamsId);
+		Stadiums stadiums = new Stadiums(this.stadiumsName);
 		return stadiums;
 	}
 }

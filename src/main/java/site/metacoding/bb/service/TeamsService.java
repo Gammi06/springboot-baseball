@@ -28,12 +28,12 @@ public class TeamsService {
 		teamsDao.delete(id);
 	}
 
-	public ListDto findById(Integer id) {
-		ListDto listDto = teamsDao.findById(id);
-		if (listDto == null) {
+	public Teams findById(Integer id) {
+		Teams teamsPS = teamsDao.findById(id);
+		if (teamsPS == null) {
 			return null;
 		}
-		return listDto;
+		return teamsPS;
 	}
 
 	public List<ListDto> findAll() {

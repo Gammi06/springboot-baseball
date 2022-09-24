@@ -4,6 +4,33 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper
 	namespace="site.metacoding.bb.domain.expulsions.ExpulsionsDao">
+
+	<insert id="insert">
+		INSERT INTO expulsions(playersName, teamsId, positionsId, reasonsId,
+		createdAt) VALUES(#{playersName}, #{teamsId}, #{positionsId}, #{reasonsId}, NOW());
+	</insert>
+
+	<select id="findById"
+		resultType="site.metacoding.bb.domain.expulsions.Expulsions">
+		SELECT * FROM expulsions WHERE id = #{id}
+	</select>
 	
-	
+	<select id="findAll"
+		resultType="site.metacoding.bb.web.dto.response.expulsions.ListDto">
+		SELECT e.id, e.playersName, t.teamsName, po.positions, r.reasons, e.createdAt
+		FROM expulsions e
+		LEFT OUTER JOIN teams t ON t.id = e.teamsId
+		LEFT OUTER JOIN positions po ON po.id = e.positionsId
+		LEFT OUTER JOIN reasons r ON r.id = e.reasonsId
+		ORDER BY t.createdAt DESC
+	</select>
+
+	<update id="update">
+		UPDATE expulsions SET expulsions.reasonsId = #{reasonsId}
+		WHERE expulsions.id = #{id}
+	</update>
+
+	<delete id="delete">
+		DELETE FROM players WHERE id = #{id}
+	</delete>
 </mapper>

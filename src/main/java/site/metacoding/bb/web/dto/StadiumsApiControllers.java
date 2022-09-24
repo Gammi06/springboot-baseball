@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import lombok.RequiredArgsConstructor;
+import site.metacoding.bb.domain.stadiums.Stadiums;
 import site.metacoding.bb.service.StadiumsService;
 import site.metacoding.bb.web.dto.request.stadiums.SaveDto;
 import site.metacoding.bb.web.dto.response.stadiums.ListDto;
@@ -31,9 +32,9 @@ public class StadiumsApiControllers {
 	}
 
 	@GetMapping("/api/stadiums/{id}")
-	public ListDto findById(@PathVariable Integer id) {
-		ListDto stardium = stadiumsService.findById(id);
-		return stardium;
+	public Stadiums findById(@PathVariable Integer id) {
+		Stadiums stadiumsPS = stadiumsService.findById(id);
+		return stadiumsPS;
 	}
 
 	@DeleteMapping("/api/stadiums/{id}")

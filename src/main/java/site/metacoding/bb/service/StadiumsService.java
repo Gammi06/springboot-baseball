@@ -32,11 +32,11 @@ public class StadiumsService {
 		return stadiumsDao.findAll();
 	}
 
-	public ListDto findById(Integer id) {
-		ListDto listDto = stadiumsDao.findById(id);
-		if (listDto == null) {
+	public Stadiums findById(Integer id) {
+		Stadiums stadiumsPS = stadiumsDao.findById(id);
+		if (stadiumsPS == null) {
 			return null;
 		}
-		return listDto;
+		return stadiumsPS;
 	}
 }

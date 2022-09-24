@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import lombok.RequiredArgsConstructor;
+import site.metacoding.bb.domain.teams.Teams;
 import site.metacoding.bb.service.TeamsService;
 import site.metacoding.bb.web.dto.request.teams.SaveDto;
 import site.metacoding.bb.web.dto.response.teams.ListDto;
@@ -31,9 +32,9 @@ public class TeamsApiControllers {
 	}
 
 	@GetMapping("/api/teams/{id}")
-	public ListDto findById(@PathVariable Integer id) {
-		ListDto teams = teamsService.findById(id);
-		return teams;
+	public Teams findById(@PathVariable Integer id) {
+		Teams teamsPS = teamsService.findById(id);
+		return teamsPS;
 	}
 
 	@DeleteMapping("/api/teams/{id}")

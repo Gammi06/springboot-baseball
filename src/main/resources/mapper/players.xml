@@ -10,11 +10,6 @@
 	</insert>
 
 	<select id="findAll"
-		resultType="site.metacoding.bb.domain.players.PlayersDao">
-		SELECT * FROM players
-	</select>
-
-	<select id="findAllToDto"
 		resultType="site.metacoding.bb.web.dto.response.players.ListDto">
 		SELECT p.id, p.playersName, t.teamsName, po.positions,
 		p.createdAt
@@ -29,8 +24,7 @@
 		FROM players p
 		LEFT OUTER JOIN teams t ON t.id = p.teamsId
 		LEFT OUTER JOIN positions po ON po.id = p.positionsId
-		WHERE p.teamsId = #{id}
-		ORDER BY createdAt DESC
+		ORDER BY t.createdAt DESC
 	</select>
 
 	<select id="findByPosition"
@@ -39,17 +33,12 @@
 		FROM players p
 		LEFT OUTER JOIN teams t ON t.id = p.teamsId
 		LEFT OUTER JOIN positions po ON po.id = p.positionsId
-		WHERE p.positionsId = #{id}
-		ORDER BY createdAt DESC
+		ORDER BY po.createdAt DESC
 	</select>
 
 	<select id="findById"
-		resultType="site.metacoding.bb.web.dto.response.players.ListDto">
-		SELECT p.id, p.playersName, t.teamsName, po.positions, p.createdAt
-		FROM players p
-		LEFT OUTER JOIN teams t ON t.id = p.teamsId
-		LEFT OUTER JOIN positions po ON po.id = p.positionsId
-		WHERE p.id = #{id}
+		resultType="site.metacoding.bb.domain.players.Players">
+		SELECT * FROM players WHERE id = #{id}
 	</select>
 
 	<delete id="delete">
