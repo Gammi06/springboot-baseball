@@ -16,8 +16,8 @@
 	</select>
 	
 	<select id="findAll"
-		resultType="site.metacoding.bb.web.dto.response.expulsions.ListDto">
-		SELECT e.id, e.playersName, t.teamsName, po.positions, r.reasons, e.createdAt
+		resultType="site.metacoding.bb.web.dto.response.expulsions.ListExpulsionsDto">
+		SELECT e.id, ROW_NUMBER() OVER(ORDER BY id) AS no, e.playersName, t.teamsName, po.positions, r.reasons, e.createdAt
 		FROM expulsions e
 		LEFT OUTER JOIN teams t ON t.id = e.teamsId
 		LEFT OUTER JOIN positions po ON po.id = e.positionsId

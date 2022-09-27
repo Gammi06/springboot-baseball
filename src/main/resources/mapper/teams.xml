@@ -10,8 +10,8 @@
 	</insert>
 
 	<select id="findAll"
-		resultType="site.metacoding.bb.web.dto.response.teams.ListDto">
-		SELECT t.id, t.teamsName, s.stadiumsName, t.createdAt
+		resultType="site.metacoding.bb.web.dto.response.teams.ListTeamsDto">
+		SELECT t.id, ROW_NUMBER() OVER(ORDER BY id) AS no, t.teamsName, s.stadiumsName, t.createdAt
 		FROM teams t
 		LEFT OUTER JOIN stadiums s ON s.id = t.stadiumsId
 		ORDER BY t.createdAt DESC

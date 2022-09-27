@@ -12,7 +12,7 @@ import lombok.RequiredArgsConstructor;
 import site.metacoding.bb.domain.players.Players;
 import site.metacoding.bb.service.PlayersService;
 import site.metacoding.bb.web.dto.request.players.SaveDto;
-import site.metacoding.bb.web.dto.response.players.ListDto;
+import site.metacoding.bb.web.dto.response.players.ListPlayersDto;
 
 @RequiredArgsConstructor
 @RestController
@@ -26,20 +26,14 @@ public class PlayerApiController {
 	}
 
 	@GetMapping("/api/players")
-	public List<ListDto> findAll() {
-		List<ListDto> players = playersService.findAll();
-		return players;
-	}
-	
-	@GetMapping("/api/players/team")
-	public List<ListDto> findByTeam(){
-		List<ListDto> players = playersService.findByTeam();
+	public List<ListPlayersDto> findAll() {
+		List<ListPlayersDto> players = playersService.findAll();
 		return players;
 	}
 	
 	@GetMapping("/api/players/position")
-	public List<ListDto> findByPosition(){
-		List<ListDto> players = playersService.findByPosition();
+	public List<ListPlayersDto> findByPosition(){
+		List<ListPlayersDto> players = playersService.findByPosition();
 		return players;
 	}
 

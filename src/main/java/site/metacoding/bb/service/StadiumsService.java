@@ -9,7 +9,7 @@ import lombok.RequiredArgsConstructor;
 import site.metacoding.bb.domain.stadiums.Stadiums;
 import site.metacoding.bb.domain.stadiums.StadiumsDao;
 import site.metacoding.bb.web.dto.request.stadiums.SaveDto;
-import site.metacoding.bb.web.dto.response.stadiums.ListDto;
+import site.metacoding.bb.web.dto.response.stadiums.ListStadiumsDto;
 
 @RequiredArgsConstructor
 @Service
@@ -28,7 +28,7 @@ public class StadiumsService {
 		stadiumsDao.delete(id);
 	}
 
-	public List<ListDto> findAll() {
+	public List<ListStadiumsDto> findAll() {
 		return stadiumsDao.findAll();
 	}
 

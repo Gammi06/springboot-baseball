@@ -12,7 +12,7 @@ import lombok.RequiredArgsConstructor;
 import site.metacoding.bb.domain.teams.Teams;
 import site.metacoding.bb.service.TeamsService;
 import site.metacoding.bb.web.dto.request.teams.SaveDto;
-import site.metacoding.bb.web.dto.response.teams.ListDto;
+import site.metacoding.bb.web.dto.response.teams.ListTeamsDto;
 
 @RequiredArgsConstructor
 @RestController
@@ -26,8 +26,8 @@ public class TeamsApiControllers {
 	}
 
 	@GetMapping("/api/teams")
-	public List<ListDto> findAll() {
-		List<ListDto> teams = teamsService.findAll();
+	public List<ListTeamsDto> findAll() {
+		List<ListTeamsDto> teams = teamsService.findAll();
 		return teams;
 	}
 

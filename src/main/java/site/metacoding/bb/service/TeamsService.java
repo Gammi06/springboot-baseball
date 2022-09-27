@@ -9,7 +9,7 @@ import lombok.RequiredArgsConstructor;
 import site.metacoding.bb.domain.teams.Teams;
 import site.metacoding.bb.domain.teams.TeamsDao;
 import site.metacoding.bb.web.dto.request.teams.SaveDto;
-import site.metacoding.bb.web.dto.response.teams.ListDto;
+import site.metacoding.bb.web.dto.response.teams.ListTeamsDto;
 
 @RequiredArgsConstructor
 @Service
@@ -36,7 +36,7 @@ public class TeamsService {
 		return teamsPS;
 	}
 
-	public List<ListDto> findAll() {
+	public List<ListTeamsDto> findAll() {
 		return teamsDao.findAll();
 	}
 }

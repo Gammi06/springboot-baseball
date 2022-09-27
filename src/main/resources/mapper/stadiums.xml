@@ -10,8 +10,8 @@
 	</insert>
 
 	<select id="findAll"
-		resultType="site.metacoding.bb.web.dto.response.stadiums.ListDto">
-		SELECT s.id, s.stadiumsName, s.createdAt
+		resultType="site.metacoding.bb.web.dto.response.stadiums.ListStadiumsDto">
+		SELECT s.id, ROW_NUMBER() OVER(ORDER BY id) AS no, s.stadiumsName, s.createdAt
 		FROM stadiums s
 	</select>
 

@@ -17,17 +17,17 @@
 <body>
 	<nav class="navbar navbar-expand-sm bg-dark navbar-dark">
 		<!-- Brand/logo -->
-		<a class="navbar-brand" href="/stadium">Baseball</a>
+		<a class="navbar-brand" href="/">⚾Baseball</a>
 		<!-- Links -->
 		<ul class="navbar-nav">
-			<li class="nav-item"><a class="nav-link" href="/stadium">야구장 목록</a></li>
-			<li class="nav-item"><a class="nav-link" href="/stadium/saveForm">야구장 등록</a></li>
-			<li class="nav-item"><a class="nav-link" href="/team">팀 목록</a></li>
-			<li class="nav-item"><a class="nav-link" href="/team/saveForm">팀 등록</a></li>
-			<li class="nav-item"><a class="nav-link" href="/">선수 목록</a></li>
-			<li class="nav-item"><a class="nav-link" href="/">선수 등록</a></li>
-			<li class="nav-item"><a class="nav-link" href="/">팀별 포지션 목록</a></li>
-			<li class="nav-item"><a class="nav-link" href="/expulsions/players">퇴출된 선수 목록</a></li>
-			<li class="nav-item"><a class="nav-link" href="/expulsions/reasons">퇴출 사유 등록</a></li>
+			<li class="nav-item"><a class="nav-link" href="/stadiums">야구장 목록</a></li>
+			<li class="nav-item"><a class="nav-link" href="/stadiums/writeform">야구장 등록</a></li>
+			<li class="nav-item"><a class="nav-link" href="/teams">팀 목록</a></li>
+			<li class="nav-item"><a class="nav-link" href="/teams/writeform">팀 등록</a></li>
+			<li class="nav-item"><a class="nav-link" href="/players">선수 목록</a></li>
+			<li class="nav-item"><a class="nav-link" href="/players/writeform">선수 등록</a></li>
+			<li class="nav-item"><a class="nav-link" href="">포지션별 팀 내 선수 목록</a></li>
+			<li class="nav-item"><a class="nav-link" href="/expulsions">퇴출된 선수 목록</a></li>
+			<li class="nav-item"><a class="nav-link" href="/expulsions/updateform">퇴출 사유 등록</a></li>
 		</ul>
 	</nav>

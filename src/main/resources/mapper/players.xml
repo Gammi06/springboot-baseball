@@ -5,35 +5,32 @@
 <mapper namespace="site.metacoding.bb.domain.players.PlayersDao">
 
 	<insert id="insert">
-		insert into players(playersName, teamsId, positionsId, createdAt)
-		VALUES(#{playersName}, #{teamsId}, #{positionsId}, NOW())
+		insert into players(playersName, teamsId,
+		positionsId, createdAt)
+		VALUES(#{playersName}, #{teamsId},
+		#{positionsId}, NOW())
 	</insert>
 
 	<select id="findAll"
-		resultType="site.metacoding.bb.web.dto.response.players.ListDto">
-		SELECT p.id, p.playersName, t.teamsName, po.positions,
+		resultType="site.metacoding.bb.web.dto.response.players.ListPlayersDto">
+		SELECT p.id, ROW_NUMBER() OVER(ORDER BY id) AS no,
+		p.playersName, t.teamsName, po.positions,
 		p.createdAt
 		FROM players p
 		LEFT OUTER JOIN teams t ON t.id = p.teamsId
-		LEFT OUTER JOIN positions po ON po.id = p.positionsId
+		LEFT OUTER JOIN positions
+		po
+		ON po.id = p.positionsId
 	</select>
 
-	<select id="findByTeam"
-		resultType="site.metacoding.bb.web.dto.response.players.ListDto">
-		SELECT p.id, p.playersName, t.teamsName, po.positions, p.createdAt
+	<select id="findByPosition" resultType="HashMap">
+		SELECT po.positions,
 		FROM players p
-		LEFT OUTER JOIN teams t ON t.id = p.teamsId
-		LEFT OUTER JOIN positions po ON po.id = p.positionsId
-		ORDER BY t.createdAt DESC
-	</select>
-
-	<select id="findByPosition"
-		resultType="site.metacoding.bb.web.dto.response.players.ListDto">
-		SELECT p.id, p.playersName, t.teamsName, po.positions, p.createdAt
-		FROM players p
-		LEFT OUTER JOIN teams t ON t.id = p.teamsId
-		LEFT OUTER JOIN positions po ON po.id = p.positionsId
-		ORDER BY po.createdAt DESC
+		INNER JOIN teams t
+		ON p.teamsId = t.id
+		INNER JOIN
+		positions po
+		ON p.positionsId = po.id
 	</select>
 
 	<select id="findById"

@@ -12,7 +12,7 @@ import lombok.RequiredArgsConstructor;
 import site.metacoding.bb.domain.expulsions.Expulsions;
 import site.metacoding.bb.service.ExpulsionsService;
 import site.metacoding.bb.web.dto.request.expulsions.UpdateDto;
-import site.metacoding.bb.web.dto.response.expulsions.ListDto;
+import site.metacoding.bb.web.dto.response.expulsions.ListExpulsionsDto;
 
 @RequiredArgsConstructor
 @RestController
@@ -26,8 +26,8 @@ public class ExpulsionsApiController {
 	}
 	
 	@GetMapping("/api/expulsions")
-	public List<ListDto> findAll(){
-		List<ListDto> expulsions = expulsionsService.findAll();
+	public List<ListExpulsionsDto> findAll(){
+		List<ListExpulsionsDto> expulsions = expulsionsService.findAll();
 		return expulsions;
 	}
 	

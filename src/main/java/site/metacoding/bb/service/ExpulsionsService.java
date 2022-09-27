@@ -10,7 +10,7 @@ import site.metacoding.bb.domain.expulsions.Expulsions;
 import site.metacoding.bb.domain.expulsions.ExpulsionsDao;
 import site.metacoding.bb.web.dto.request.expulsions.SaveDto;
 import site.metacoding.bb.web.dto.request.expulsions.UpdateDto;
-import site.metacoding.bb.web.dto.response.expulsions.ListDto;
+import site.metacoding.bb.web.dto.response.expulsions.ListExpulsionsDto;
 
 @RequiredArgsConstructor
 @Service
@@ -41,7 +41,7 @@ public class ExpulsionsService {
 		expulsionsDao.update(expulsionsPS);
 	}
 	
-	public List<ListDto> findAll(){
+	public List<ListExpulsionsDto> findAll(){
 		return expulsionsDao.findAll();
 	}
 	

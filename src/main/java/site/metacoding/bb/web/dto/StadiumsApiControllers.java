@@ -12,7 +12,7 @@ import lombok.RequiredArgsConstructor;
 import site.metacoding.bb.domain.stadiums.Stadiums;
 import site.metacoding.bb.service.StadiumsService;
 import site.metacoding.bb.web.dto.request.stadiums.SaveDto;
-import site.metacoding.bb.web.dto.response.stadiums.ListDto;
+import site.metacoding.bb.web.dto.response.stadiums.ListStadiumsDto;
 
 @RequiredArgsConstructor
 @RestController
@@ -26,8 +26,8 @@ public class StadiumsApiControllers {
 	}
 
 	@GetMapping("/api/stadiums")
-	public List<ListDto> findAll() {
-		List<ListDto> stadiums = stadiumsService.findAll();
+	public List<ListStadiumsDto> findAll() {
+		List<ListStadiumsDto> stadiums = stadiumsService.findAll();
 		return stadiums;
 	}
 
