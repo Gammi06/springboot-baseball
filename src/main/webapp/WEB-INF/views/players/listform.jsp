@@ -5,9 +5,6 @@
 <h3 style="text-align: center">🏃‍♀️선수 목록 페이지입니다.</h3>
 <br />
 <div class="container">
-	<div class="col text-right">
-		<button type="button" class="btn btn-danger btn-sm">삭제</button>
-	</div>
 	<br />
 	<table class="table table-striped">
 		<thead>
@@ -29,11 +26,27 @@
 					<td>${players.playersName}</td>
 					<td><fmt:formatDate value="${players.createdAt}"
 							pattern="yyyy-MM-dd" /></td>
-					<td><input class="form-check-input" type="checkbox"></td>
+					<td><input id="id" type="hidden" value="${players.no}" />
+					<button onclick="deleteById(${players.id});" type="button" class="btn btn-danger btn-sm">삭제</button>
 				</tr>
 			</c:forEach>
 		</tbody>
 	</table>
 </div>
+
+<script>
+	function deleteById(id){
+		$.ajax("/players/" + id, {
+			type: "DELETE",
+			dataType: "json"
+		}).done((res)=>{
+			if(res.code == 1){
+				location.reload();
+			}else{
+				alert("선수 삭제에 실패하셨습니다.");
+			}
+		});
+	}
+</script>
 
 <%@ include file="../layout/footer.jsp"%>

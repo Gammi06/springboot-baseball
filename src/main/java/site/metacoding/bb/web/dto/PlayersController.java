@@ -5,13 +5,16 @@ import java.util.List;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.annotation.Validated;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import lombok.RequiredArgsConstructor;
 import site.metacoding.bb.service.PlayersService;
 import site.metacoding.bb.service.PositionsService;
 import site.metacoding.bb.service.TeamsService;
+import site.metacoding.bb.web.dto.response.CMRespDto;
 import site.metacoding.bb.web.dto.response.players.ListPlayersDto;
 import site.metacoding.bb.web.dto.response.positions.ListPositionsDto;
 import site.metacoding.bb.web.dto.response.teams.ListTeamsDto;
@@ -21,7 +24,6 @@ import site.metacoding.bb.web.dto.response.teams.ListTeamsDto;
 public class PlayersController {
 	private final PlayersService playersService;
 	private final TeamsService teamsService;
-	private final PositionsService positionsService;
 
 	@GetMapping("/players")
 	public String findAll(Model model) {
@@ -48,5 +50,11 @@ public class PlayersController {
 		List<ListTeamsDto> teams = teamsService.findAll();
 		model.addAttribute("teams", teams);
 		return "players/writeform";
+	}
+	
+	@DeleteMapping("/players/{id}")
+	public @ResponseBody CMRespDto<?> delete(@PathVariable Integer id){
+		playersService.delete(id);
+		return new CMRespDto<>(1, "플레이어 삭제 성공", null);
 	}
 }

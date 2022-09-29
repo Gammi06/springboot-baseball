@@ -4,10 +4,7 @@
 <br />
 <h3 style="text-align: center">🏳‍🌈팀 목록 페이지입니다.</h3>
 <div class="container">
-	<div class="col text-right">
-		<button type="button" class="btn btn-danger btn-sm">삭제</button>
-	</div>
-	<br />
+<br />
 	<table class="table table-striped">
 		<thead>
 			<tr>
@@ -26,11 +23,27 @@
 					<td>${teams.stadiumsName}</td>
 					<td><fmt:formatDate value="${teams.createdAt}"
 							pattern="yyyy-MM-dd" /></td>
-					<td><input class="form-check-input" type="checkbox"></td>
+					<td><input id="id" type="hidden" value="${teams.no}" />
+					<button onclick="deleteById(${teams.id});" type="button" class="btn btn-danger btn-sm">삭제</button></td>
 				</tr>
 			</c:forEach>
 		</tbody>
 	</table>
 </div>
+
+<script>
+	function deleteById(id){
+		$.ajax("/teams/" + id, {
+			type: "DELETE",
+			dataType: "json"
+		}).done((res)=>{
+			if(res.code == 1){
+				location.reload();
+			}else{
+				alert("팀 삭제에 실패하셨습니다.");
+			}
+		});
+	}
+</script>
 
 <%@ include file="../layout/footer.jsp"%>

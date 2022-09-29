@@ -11,7 +11,7 @@
 				<th>경기장 이름:</th>
 				<th><select class="form-select">
 						<c:forEach var="stadiums" items="${stadiums}">
-							<option>${stadiums.stadiumsName}</option>
+							<option id="delCheck">${stadiums.stadiumsName}</option>
 						</c:forEach>
 				</select></th>
 				<th>팀 이름:</th>
