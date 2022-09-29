@@ -36,9 +36,10 @@
 			dataType: "json"
 		}).done((res)=>{
 			if(res.code == 1){
+				alert("경기장 삭제 성공");
 				location.reload();
 			}else{
-				alert("경기장 삭제에 실패하셨습니다.");
+				alert("경기장 삭제 실패");
 			}
 		});
 	}

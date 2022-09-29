@@ -57,10 +57,10 @@
 			}
 		}).done((res)=>{
 			if(res.code == 1){
-				alert("퇴출 사유 수정을 성공했습니다.");
+				alert("퇴출 사유 수정 성공");
 				location.href="/expulsions";
 			}else{
-				alert("퇴출 사유 수정을 실패하였습니다.");
+				alert("퇴출 사유 수정 실패");
 			}
 		});
 	}
