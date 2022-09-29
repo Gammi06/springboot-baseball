@@ -32,7 +32,7 @@ public class ExpulsionsController {
 		return "expulsions/listform";
 	}
 	
-	@PutMapping("/expulsions/update")
+	@PutMapping("/expulsions/update/{id}")
 	public @ResponseBody CMRespDto<?> update(@PathVariable Integer id, @RequestBody UpdateDto updateDto){
 		expulsionsService.update(id, updateDto);
 		return new CMRespDto<>(1, "퇴출 이유 수정 완료", null);

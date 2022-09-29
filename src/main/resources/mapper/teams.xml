@@ -14,7 +14,6 @@
 		SELECT t.id, ROW_NUMBER() OVER(ORDER BY id) AS no, t.teamsName, s.stadiumsName, t.createdAt
 		FROM teams t
 		LEFT OUTER JOIN stadiums s ON s.id = t.stadiumsId
-		ORDER BY t.createdAt DESC
 	</select>
 
 	<select id="findById"

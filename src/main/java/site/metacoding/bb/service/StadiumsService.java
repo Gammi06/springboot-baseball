@@ -17,8 +17,7 @@ public class StadiumsService {
 	private final StadiumsDao stadiumsDao;
 
 	public void insert(SaveDto saveDto) {
-		Stadiums stadiums = saveDto.toEntity();
-		stadiumsDao.insert(stadiums);
+		stadiumsDao.insert(saveDto.toEntity());
 	}
 
 	@Transactional(rollbackFor = RuntimeException.class)

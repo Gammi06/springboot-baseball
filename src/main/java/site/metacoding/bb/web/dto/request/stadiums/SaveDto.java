@@ -10,7 +10,8 @@ public class SaveDto {
 	private String stadiumsName;
 
 	public Stadiums toEntity() {
-		Stadiums stadiums = new Stadiums(this.stadiumsName);
+		Stadiums stadiums = new Stadiums();
+		stadiums.setStadiumsName(this.stadiumsName);
 		return stadiums;
 	}
 }

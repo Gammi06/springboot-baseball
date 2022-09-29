@@ -26,12 +26,6 @@ public class TeamsController {
 	private final TeamsService teamsService;
 	private final StadiumsService stadiumsService;
 	
-	@PostMapping("/teams/save")
-	public @ResponseBody CMRespDto<?> save(@RequestBody SaveDto saveDto){
-		teamsService.insert(saveDto);
-		return new CMRespDto<>(1, "팀 등록 완료", null);
-	}
-	
 	@GetMapping("/teams")
 	public String findAll(Model model) {
 		List<ListTeamsDto> teams = teamsService.findAll();
@@ -44,6 +38,12 @@ public class TeamsController {
 		List<ListStadiumsDto> stadiums = stadiumsService.findAll();
 		model.addAttribute("stadiums", stadiums);
 		return "teams/writeform";
+	}
+	
+	@PostMapping("/teams")
+	public @ResponseBody CMRespDto<?> insert(@RequestBody SaveDto saveDto){
+		teamsService.insert(saveDto);
+		return new CMRespDto<>(1, "팀 생성 성공", null);
 	}
 	
 	@DeleteMapping("/teams/{id}")
